@@ -86,3 +86,6 @@
     background-color: rgb(63, 61, 85);
     user-select: none;
 }
+a {
+    text-decoration: none;
+}
