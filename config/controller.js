@@ -48,6 +48,7 @@ router.post("/login", async (req, res) => {
         token = jwt.sign({id: user._id},process.env.JWT, {expiresIn: "60sec"})
         console.log(token);
         res.cookie("token", token, {maxAge: 60000, httpOnly: true})
+        res.redirect("/home")
     } else {
         res.status(401).json({message: "Failed"})
     }
