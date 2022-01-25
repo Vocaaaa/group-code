@@ -5,6 +5,8 @@
     box-sizing: border-box;
     font-family: sans-serif;
     color: white;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .topbar {
@@ -47,5 +49,59 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.btn {
+    padding: 10px;
+    background-color: rgb(48, 42, 100);
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: 0.5s;
+    margin-top: 20px;
+}
+
+.btn:hover {
+transition: 0.5s;
+transform: scale(1.2);
+}
+
+.emppos {
+    width: 1000px;
+    position: absolute;
+    bottom: -600px;
+
+}
+
+.animate {
+    animation: slidein 8s;
+}
+
+@keyframes slidein {
+    0% {
+        bottom: -600px;
+        transform: skewX(0);
+    }
+    10% {
+        bottom: 0px;
+        transform: rotate(0deg);
+    }
+    20% {
+        bottom: 0px;
+        transform: rotate(360deg);
+    }
+    30% {
+        bottom: 0px;
+        transform: rotate(360deg);
+        transform: scaleX(10);
+    }
+    40% {
+        bottom: 0px;
+        transform: rotate(360deg);
+        transform: scaleY(10);
+    }
+    100% {
+        bottom: -600px;
+    }
 }
 
