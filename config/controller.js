@@ -54,9 +54,9 @@ router.post("/login", async (req, res) => {
     res.redirect("/home")
 })
 router.post("/signup", (req, res) => {
-    let {f_name, l_name, password1, password2, email, personID} = req.body
+    let {f_name, l_name, password1, password2, f_email, personID} = req.body
     let error = []
-    if(!(f_name, l_name, password1, password2, email, personID)) {
+    if(!(f_name, l_name, password1, password2, f_email, personID)) {
         error.push({message: "Please fill out all fields"})
     }
     if(!(password1 === password2)) {
@@ -71,7 +71,7 @@ router.post("/signup", (req, res) => {
     const info = new User({
         firstname: f_name,
         lastname: l_name,
-        email: email,
+        email: f_email,
         password: hashedPassword
     })
     info.save((err) => {
