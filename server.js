@@ -18,9 +18,9 @@ const userSchema = mongoose.Schema({
 const Users = mongoose.model("usersModel", userSchema, "users");
 
 server.get("/register", (req, res)=> {
-    const name = req.body.name
-    const email = req.body.email
-    const password = req.body.password
+    const name = req.body.f_name
+    const email = req.body.f_email
+    const password = req.f.password
     const name = req.body.name
     const data = new Users({
         name: name,
