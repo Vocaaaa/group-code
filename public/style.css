@@ -48,9 +48,40 @@
     flex-direction: column;
 }
 
+.register {
+    margin-bottom: 20px;
+    transition: 0.5s;
+}
+
+.login {
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+.login:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.register:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
 .register a {
     text-decoration: none;
-    width: 100px;
-    height: 40px;
+    padding: 10px;
     border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(63, 61, 85);
+    user-select: none;
+}
+
+.login a {
+    text-decoration: none;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(63, 61, 85);
+    user-select: none;
 }
