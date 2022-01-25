@@ -20,8 +20,7 @@ const Users = mongoose.model("usersModel", userSchema, "users");
 server.get("/register", (req, res)=> {
     const name = req.body.f_name
     const email = req.body.f_email
-    const password = req.f.password
-    const name = req.body.name
+    const password = req.f_password
     const data = new Users({
         name: name,
         email: email,
