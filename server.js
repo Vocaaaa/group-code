@@ -2,73 +2,67 @@ const express = require("express");
 const server = express();
 const mongoose = require("mongoose");
 server.use(express.static("public"));
+server.use(express.urlencoded({extended:true}));
 
-mongoose.connect("mongodb+srv://test:optima123@cluster0.ex0bg.mongodb.net/db");
-const db = mongoose.connection
+server.get("/register", (req, res)=>{
+    res.sendFile(__dirname + "/public" + "/register.html")
+})
 
-db.on("open", (err)=> {
+server.get("/login", (req, res)=>{
+    res.sendFile(__dirname + "/public" + "/login.html")
+})
+
+server.get("/home", (req, res)=>{
+    res.sendFile(__dirname + "/public" + "/home.html")
+})
+
+
+
+mongoose.connect("mongodb://localhost:27017/db");
+const db = mongoose.connection;
+
+db.on("open", (err)=>{
     if(err)throw err
-    console.log("Connected to Database");
-});
-const userSchema = mongoose.Schema({
+    console.log("connected to database");
+}); 
+
+const personsSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String
 });
-const Users = mongoose.model("usersModel", userSchema, "users");
 
-server.get("/register", (req, res)=> {
-    const name = req.body.f_name
-    const email = req.body.f_email
-    const password = req.f_password
-    const data = new Users({
+const Persons = mongoose.model("person", personsSchema, "persons");
+
+server.post("/register", (req, res) => {
+    let name = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+    let data = new Persons({
         name: name,
         email: email,
         password: password
-    });
-})
-server.get("/login", (req, res)=> {
-    res.redirect("/public" + "/home.html")
-})
-
-server.get("/login", (req, res) => {
-    res.sendFile(__dirname + "/public" + "/login.html")
-})
-server.get("/update", (req, res) => {
-    res.sendFile(__dirname + "/public" + "/updateuser.html")
-})
-server.get("/home", (req, res) => {
-    res.sendFile(__dirname + "/public" + "/home.html")
-})
-server.get("/deleteuser", (req, res) => {
-    res.sendFile(__dirname + "/public" + "/deleteuser.html")
-})
-
-server.post("/delete", (req, res)=>{
-    const deleteEmail = req.body.delete-email
-    const deletePassword = req.body.delete-password
-    async function deleteUser() {
-        const deletedUser = await Users.findOneAndDelete({email:deleteEmail, password:deletePassword})
-        if(deleteUser){
-            res.send("User deleted")
-        } else {
-            res.send("Oops, something went wrong")
+    })
+    data.save((err)=>{
+        if(err){
+            console.log(err)
         }
-    }
-    deleteUser();
-})
-server.post("/update", (req, res) => {
-    const oldName = req.body.old_name
-    const newName = req.body.new_name
-    async function updateUser() {
-        const updatedName = await Users.findOneAndUpdate({name:oldName}, {name:newName})
-        if(updatedName) {
-            res.send("Username updated")
+        console.log("saved")
+    })
+    res.redirect("/login")
+});
+
+server.post("/login", (req, res)=>{
+    const userEmail = req.body.login_email
+    const userPassword = req.body.login_password
+    const match = Persons.findOne({email:userEmail, password:userPassword}, (err, result)=>{
+        console.log(result)
+        if(result == null) {
+            res.send("login failed")
         } else {
-            res.send("Oops, something went wrong")
+            res.redirect("/home")
         }
-    }
-    updateUser();
+    })
 })
 
-server.listen(3000)
+server.listen(4000);
