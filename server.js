@@ -23,5 +23,5 @@ db.once("open", (err) => {
 
 server.listen(3000, (err) => {
     if (err) throw err
-    console.log("Connected to web");
+    console.log("Connected To web");
 });
