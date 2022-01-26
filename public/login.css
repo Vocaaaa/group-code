@@ -80,3 +80,6 @@ transform: scale(1.2);
     text-decoration: none;
     padding: 20px 30px;
 }
+a {
+    text-decoration: none;
+}
