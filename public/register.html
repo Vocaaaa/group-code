@@ -18,12 +18,12 @@
 
     <div class="parent">
         <h1 class="signup-text">Sign up!</h1>
-        <form action="">
-            <input type="text" name="f_name" placeholder="Name" required>
-            <input type="email" name="f_email" placeholder="Email" required>
-            <input type="password" name="f_password" placeholder="Password" required>
+        <form action="/register" method="post">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button class="register-btn">Register</button>
         </form>
-        <button class="register-btn"><a href="#">Register</a></button>
         <p class="already-text">Already have an account? <a class="already-login" href="login.html">Log In</a></p>
     </div>
 </body>
