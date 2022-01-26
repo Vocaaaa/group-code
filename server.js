@@ -13,7 +13,7 @@ server.use(express.static("public"));
 server.use("/", router);
 
 // Mongoose connections
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect("mongodb+srv://test:optima123@cluster0.ex0bg.mongodb.net/db?retryWrites=true&w=majority");
 const db = mongoose.connection
 db.once("open", (err) => {
     if(err) throw err
