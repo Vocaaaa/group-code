@@ -49,13 +49,14 @@ server.post("/register", (req, res) => {
         }
         console.log("saved")
     })
+    // kolla om detta fungerar
     res.redirect("/login")
 });
 
 server.post("/login", (req, res)=>{
     const userEmail = req.body.login_email
     const userPassword = req.body.login_password
-    const match = Persons.findOne({email:userEmail, password:userPassword}, (err, result)=>{
+    Persons.findOne({email:userEmail, password:userPassword}, (err, result)=>{
         console.log(result)
         if(result == null) {
             res.send("login failed")
