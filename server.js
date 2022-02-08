@@ -32,7 +32,13 @@ const personsSchema = new mongoose.Schema({
     password: String
 });
 
+const quoteSchema = new mongoose.Schema({
+    quote: String
+})
+
 const Persons = mongoose.model("person", personsSchema, "persons");
+
+const Quote = mongoose.model("quote", quoteSchema, "quotes");
 
 server.post("/register", (req, res) => {
     let name = req.body.name;
@@ -63,6 +69,20 @@ server.post("/login", (req, res)=>{
             res.redirect("/home")
         }
     })
+})
+
+server.post("/home", (req, res) => {
+    let quote = req.body.textarea
+    let data = new Quote({
+        quote: quote
+    })
+    data.save((err)=>{
+        if(err){
+            console.log(err)
+        }
+        console.log("saved")
+    })
+    res.redirect("/home")
 })
 
 server.listen(4000);

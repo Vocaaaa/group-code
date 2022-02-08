@@ -5,23 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="favii.png">
+    <title>Document</title>
 </head>
 <body>
     <div class="topbar">
-        <a href="index.html"><h2>Simple Login</h2></a>
-        <ul>
-            <li><a href="index.html">Sign out!</a></li>
-        </ul>
+        <h2>Simple Login</h2>
     </div>
-
     <div class="parent">
-        <h1>Welcome!, now get out</h1>
-        <button id="btn" class="btn">Click me!</button>
-        <img class="emppos" id="emppos" src="emppos.png" alt="">
+        <div class="second-h2-box">
+            <h2 class="second-h2">Sign in successful!</h2>
+        </div>
+        <button id="black"></button>
+        <button id="purple"></button>
+        <button id="red"></button>
+        <button id="standard">Standard</button>
+
+        <div class="quote-container">
+            <form action="/home" method="post">
+            <p class="send-quote-server">Send Quote to server</p>
+            <input type="text" id="text-area" name="textarea" placeholder="Type here" required>
+            <button class="btn" id="btn" type="submit" name="btn">Send Quote</button>
+        </form>
     </div>
-    
-    <script src="app.js"></script>
+</div>
+    <script src="home.js"></script>
 </body>
 </html>
